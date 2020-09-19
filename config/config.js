@@ -8,6 +8,7 @@ module.exports = {
     username: "admin",
     password: process.env.DATABASE_PASSWORD,
     database: "shortlyAWS",
+    port: 13306,
     host: "shortlyaws-dbdb.cdnjilyhs3ms.us-east-2.rds.amazonaws.com",
     dialect: "mysql",
     logging: false,
