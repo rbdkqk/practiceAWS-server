@@ -48,7 +48,6 @@ app.get("/", (req, res) => {
   // if (err) {
   //   return err;
   // }
-  console.log(req);
   res.status(200).send("Success");
 });
 
