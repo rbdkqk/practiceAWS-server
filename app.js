@@ -32,7 +32,7 @@ app.use(
   cors({
     origin: [
       // "http://3.20.232.121",
-      "localhost",
+      "localhost:3000",
     ],
     methods: ["GET", "POST"],
     credentials: true,
