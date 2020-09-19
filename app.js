@@ -15,7 +15,7 @@ const { urls } = require("./models");
 const morgan = require("morgan");
 
 const app = express();
-const port = 3001;
+const port = 13306;
 
 app.use(
   session({
@@ -30,7 +30,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: [
+      "http://practiceaws-database.cdnjilyhs3ms.us-east-2.rds.amazonaws.com:13306",
+    ],
     methods: ["GET", "POST"],
     credentials: true,
   })
