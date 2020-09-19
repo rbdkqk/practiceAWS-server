@@ -31,8 +31,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
     origin: [
-      // "http://practiceaws-database.cdnjilyhs3ms.us-east-2.rds.amazonaws.com:13306",
-      "localhost",
+      "http://3.20.232.121",
+      // "localhost",
     ],
     methods: ["GET", "POST"],
     credentials: true,
