@@ -5,19 +5,19 @@ const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
-const config = require(__dirname + "/../config/config.js")[env];
+// const config = require(__dirname + "/../config/config.js")[env];
 const db = {};
 
-// const config = {
-//   development: {
-//     username: "root",
-//     password: process.env.DATABASE_PASSWORD,
-//     database: "shortly",
-//     host: "localhost",
-//     dialect: "mysql",
-//     logging: false,
-//   },
-// };
+const config = {
+  development: {
+    username: "admin",
+    password: "12345678",
+    database: "shortlyAWS",
+    host: "shortlyaws-dbdb.cdnjilyhs3ms.us-east-2.rds.amazonaws.com",
+    dialect: "mysql",
+    logging: false,
+  },
+};
 
 let sequelize;
 if (config.use_env_variable) {
