@@ -11,7 +11,7 @@ const db = {};
 const config = {
   development: {
     username: "admin",
-    password: "12345678",
+    password: 12345678,
     database: "shortlyAWS",
     host: "shortlyaws-dbdb.cdnjilyhs3ms.us-east-2.rds.amazonaws.com",
     dialect: "mysql",
