@@ -43,31 +43,31 @@ let corsOptions = {
   },
 };
 
-app.use(cors()); // cors
-// app.use(
-//   cors({
-//     origin: [
-//       "http://shortlyaws-client.s3-website.ap-northeast-2.amazonaws.com/",
-//       // "localhost:3000",
-//     ],
-//     methods: ["GET", "POST"],
-//     credentials: true,
-//   })
-// );
+// app.use(cors()); // cors
+app.use(
+  cors({
+    origin: [
+      "http://shortlyaws-client.s3-website.ap-northeast-2.amazonaws.com:13306",
+      // "localhost:3000",
+    ],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
 // ? POSTMAN을 통한 test에 필요할지도 모릅니다. logging을 활용하세요.
 // app.use(morgan('dev'));
 
 // TODO : GET / 요청에 대한 응답을 작성해주세요. (api 구현을 가볍게 시작해보세요.)
 // app. ...
-app.get("/", (req, res) => {
+app.get("/", cors(corsOptions), (req, res) => {
   // if (err) {
   //   return err;
   // }
   res.status(200).send("Success");
 });
 
-app.get("/D*", (req, res) => {
+app.get("/D*", cors(corsOptions), (req, res) => {
   urls
     .findOne({
       where: {
