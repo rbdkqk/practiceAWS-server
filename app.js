@@ -28,6 +28,21 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+let whitelist = [
+  "http://localhost:3000",
+  "ec2-3-20-232-121.us-east-2.compute.amazonaws.com",
+];
+let corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
 app.use(cors()); // cors
 // app.use(
 //   cors({
