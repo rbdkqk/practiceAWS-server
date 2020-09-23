@@ -28,16 +28,17 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(
-  cors({
-    origin: [
-      "http://shortlyaws-client.s3-website.ap-northeast-2.amazonaws.com/",
-      // "localhost:3000",
-    ],
-    methods: ["GET", "POST"],
-    credentials: true,
-  })
-);
+app.use(cors()); // cors
+// app.use(
+//   cors({
+//     origin: [
+//       "http://shortlyaws-client.s3-website.ap-northeast-2.amazonaws.com/",
+//       // "localhost:3000",
+//     ],
+//     methods: ["GET", "POST"],
+//     credentials: true,
+//   })
+// );
 
 // ? POSTMAN을 통한 test에 필요할지도 모릅니다. logging을 활용하세요.
 // app.use(morgan('dev'));
