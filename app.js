@@ -31,13 +31,11 @@ let whitelist = [
   "http://shortlyaws-client.s3-website.ap-northeast-2.amazonaws.com",
 ];
 
-let corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
+const corsOptions = {
+  origin: (origin, callback) => {
+    console.log(`origin`, origin);
+    if (whitelist.indexOf(origin) !== -1) callback(null, true);
+    else callback(new Error("Not allowed by CORS"));
   },
   credentials: true,
 };
