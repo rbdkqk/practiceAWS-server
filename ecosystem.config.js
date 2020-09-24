@@ -3,10 +3,10 @@ module.exports = {
     {
       script: "./app.js",
       env: {
-        DATABASE_PASSWORD: 12345678,
+        DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
       },
       env_production: {
-        DATABASE_PASSWORD: 12345678,
+        DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
       },
     },
   ],
