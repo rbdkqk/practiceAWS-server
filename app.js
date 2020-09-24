@@ -28,6 +28,7 @@ app.use(
 let whitelist = [
   "http://localhost:3000",
   "ec2-3-20-232-121.us-east-2.compute.amazonaws.com:13306",
+  "http://shortlyaws-client.s3-website.ap-northeast-2.amazonaws.com",
 ];
 
 let corsOptions = {
