@@ -25,14 +25,11 @@ app.use(
   })
 );
 
-app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
 let whitelist = [
   "http://localhost:3000",
-  "ec2-3-20-232-121.us-east-2.compute.amazonaws.com",
+  "ec2-3-20-232-121.us-east-2.compute.amazonaws.com:13306",
 ];
+
 let corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -41,33 +38,38 @@ let corsOptions = {
       callback(new Error("Not allowed by CORS"));
     }
   },
+  credentials: true,
 };
 
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors(corsOptions));
 // app.use(cors()); // cors
-app.use(
-  cors({
-    origin: [
-      "http://shortlyaws-client.s3-website.ap-northeast-2.amazonaws.com:13306",
-      // "localhost:3000",
-    ],
-    methods: ["GET", "POST"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: [
+//       "http://shortlyaws-client.s3-website.ap-northeast-2.amazonaws.com:13306",
+//       // "localhost:3000",
+//     ],
+//     methods: ["GET", "POST"],
+//     credentials: true,
+//   })
+// );
 
 // ? POSTMAN을 통한 test에 필요할지도 모릅니다. logging을 활용하세요.
 // app.use(morgan('dev'));
 
 // TODO : GET / 요청에 대한 응답을 작성해주세요. (api 구현을 가볍게 시작해보세요.)
 // app. ...
-app.get("/", cors(corsOptions), (req, res) => {
+app.get("/", (req, res) => {
   // if (err) {
   //   return err;
   // }
   res.status(200).send("Success");
 });
 
-app.get("/D*", cors(corsOptions), (req, res) => {
+app.get("/D*", (req, res) => {
   urls
     .findOne({
       where: {
