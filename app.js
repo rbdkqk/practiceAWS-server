@@ -68,10 +68,15 @@ app.get("/", (req, res) => {
 });
 
 app.get("/D*", (req, res) => {
+  // "/D*"  :  D 로 시작하는 링크로 get 요청이 들어오면,
+  // (만들어진 리스트의 각각의 링크를 눌러 접속하면,) (예시 : http://3.20.232.121:13306/D16fd9 주소를 누르면,)
+
+  // 클라이언트의 src/components/LinkItem.js 를 참고했는데,
+  // 도메인을 사야 (위와 같이 ip로 나오지 않고) http://Shortly.com/D16fd9 방식으로 표현되는 것 같음..
   urls
     .findOne({
       where: {
-        code: "D" + req.params[0],
+        code: "D" + req.params[0], // req.params[0]  :  http://3.20.232.121:13306/D16fd9 중에서, "16fd9" 부분인 듯
       },
     })
     .then((result) => {
@@ -79,7 +84,7 @@ app.get("/D*", (req, res) => {
         result.update({
           visits: result.visits + 1,
         });
-        res.redirect(result.url);
+        res.redirect(result.url); // 찾은 결과의 url로 redirect 해 준다. // 이걸
       } else {
         res.sendStatus(204);
       }
